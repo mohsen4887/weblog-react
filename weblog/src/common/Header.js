@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 function Header({ title }) {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container">
+        <a className="navbar-brand" href="#">
           وبلاگ من
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -16,27 +16,27 @@ function Header({ title }) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <Link class="nav-link" to="/">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
                 صفحه اصلی
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="categories">
+            <li className="nav-item">
+              <Link className="nav-link" to="categories">
                 دسته بندی ها
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="search">
+            <li className="nav-item">
+              <Link className="nav-link" to="search">
                 جستجو
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link " to="about">
+            <li className="nav-item">
+              <Link className="nav-link " to="about">
                 درباره ما
               </Link>
             </li>
