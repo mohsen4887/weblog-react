@@ -10,6 +10,16 @@ async function getAllUsers() {
   }
 }
 
+async function deleteUser(id) {
+  try {
+    await http.delete(`users/${id}`);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 export default {
   getAllUsers,
+  deleteUser,
 };
