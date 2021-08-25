@@ -5,7 +5,6 @@ import Navigation from "./navigation/Navigation";
 function App() {
   return (
     <Router>
-      <Header title="Home" />
       <Navigation />
     </Router>
   );
