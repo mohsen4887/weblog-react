@@ -33,13 +33,11 @@ function Users() {
         setLoading(true);
         await usersService.deleteUser(id);
         await getUsers();
-        toast.success("کار بر مورد نظر با موفقیت حذف شد");
         setLoading(false);
       }
     } catch (error) {
       console.log(error);
       setLoading(false);
-      toast.error("خطا در حذف کاربر");
     }
   };
 
@@ -99,7 +97,12 @@ function Users() {
 
   return (
     <div>
-      <h2>کاربران</h2>
+      <div className="d-flex flex-row align-items-center justify-content-between mb-4 mb-lg-5">
+        <h2 className="m-0">کاربران</h2>
+        <Link className="btn btn-primary" to="/panel/users/create">
+          ایجاد کاربر
+        </Link>
+      </div>
       {renderContent()}
     </div>
   );
