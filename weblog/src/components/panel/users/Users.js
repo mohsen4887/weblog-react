@@ -3,17 +3,25 @@ import { Link } from "react-router-dom";
 import Alert from "../../../common/alert/Alert";
 import usersService from "../../../services/usersService";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const getUsers = async () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const getUsers = async (query = "", sort = "") => {
     try {
       setLoading(true);
-      const users = await usersService.getAllUsers();
-      if (Array.isArray(users)) {
-        setUsers(users);
+      const result = await usersService.getAllUsers(query, sort);
+      if (Array.isArray(result.data)) {
+        setUsers(result.data);
       }
       setLoading(false);
     } catch (error) {
@@ -21,6 +29,12 @@ function Users() {
       setLoading(false);
     }
   };
+
+  const onFilterSubmit = (data) => {
+    getUsers(data.query, data.sort);
+  };
+
+  const onFilterReset = () => {};
 
   useEffect(() => {
     getUsers();
@@ -103,7 +117,76 @@ function Users() {
           ایجاد کاربر
         </Link>
       </div>
+      <div className="mb-3">
+        <form
+          className="row row-cols-lg-auto g-3 align-items-center"
+          onSubmit={handleSubmit(onFilterSubmit)}
+        >
+          <div className="col-12">
+            <input
+              type="text"
+              className="form-control"
+              {...register("query")}
+              placeholder="جستجو ..."
+            />
+          </div>
+
+          <div className="col-12">
+            <select className="form-select" {...register("sort")}>
+              <option value="">مرتب سازی</option>
+              <option value="oldest">قدیمی ترین</option>
+              <option value="latest">جدیدترین</option>
+            </select>
+          </div>
+
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary">
+              ثبت
+            </button>
+          </div>
+          <div className="col-12">
+            <button
+              type="button"
+              onClick={onFilterReset}
+              className="btn btn-light"
+            >
+              نمایش همه
+            </button>
+          </div>
+        </form>
+      </div>
       {renderContent()}
+      <div>
+        <nav aria-label="Page navigation example">
+          <ul className="pagination">
+            <li className="page-item">
+              <a className="page-link" href="#">
+                قبلی
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                1
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                2
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                3
+              </a>
+            </li>
+            <li className="page-item">
+              <a className="page-link" href="#">
+                بعدی
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { toast } from "react-toastify";
 import http from "./base";
 
-async function getAllUsers() {
+async function getAllUsers(query = "", sort = "", page = 1, perPage = 15) {
   try {
-    const { data } = await http.get("users");
+    const { data } = await http.get(
+      `users?query=${query}&sort=${sort}&page=${page}&perPage=${perPage}`
+    );
     return data;
   } catch (error) {
     console.log(error);
