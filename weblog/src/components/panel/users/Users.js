@@ -4,24 +4,30 @@ import Alert from "../../../common/alert/Alert";
 import usersService from "../../../services/usersService";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import Pagination from "../../../common/Pagination";
 
 function Users() {
   const [users, setUsers] = useState([]);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm();
 
-  const getUsers = async (query = "", sort = "") => {
+  const getUsers = async (query = "", sort = "", page = 1) => {
     try {
       setLoading(true);
-      const result = await usersService.getAllUsers(query, sort);
+      const result = await usersService.getAllUsers(query, sort, page, 1);
       if (Array.isArray(result.data)) {
+        setPage(page);
         setUsers(result.data);
+        setTotalUsers(result.totalUsers);
       }
       setLoading(false);
     } catch (error) {
@@ -30,11 +36,18 @@ function Users() {
     }
   };
 
+  const onPageClick = (page) => {
+    getUsers(getValues("query"), getValues("sort"), page);
+  };
+
   const onFilterSubmit = (data) => {
     getUsers(data.query, data.sort);
   };
 
-  const onFilterReset = () => {};
+  const onFilterReset = () => {
+    reset();
+    getUsers();
+  };
 
   useEffect(() => {
     getUsers();
@@ -81,7 +94,7 @@ function Users() {
                     <td>
                       <Link
                         to={`/panel/users/${user.id}/edit`}
-                        className="btn btn-sm btn-primary ms-2"
+                        className="btn btn-sm btn-primary me-2"
                       >
                         ویرایش
                       </Link>
@@ -156,37 +169,12 @@ function Users() {
         </form>
       </div>
       {renderContent()}
-      <div>
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            <li className="page-item">
-              <a className="page-link" href="#">
-                قبلی
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                بعدی
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Pagination
+        total={totalUsers}
+        perPage={1}
+        currentPage={page}
+        onPageClick={onPageClick}
+      />
     </div>
   );
 }
