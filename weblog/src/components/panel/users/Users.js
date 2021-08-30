@@ -23,7 +23,7 @@ function Users() {
   const getUsers = async (query = "", sort = "", page = 1) => {
     try {
       setLoading(true);
-      const result = await usersService.getAllUsers(query, sort, page, 1);
+      const result = await usersService.getAllUsers(query, sort, page);
       if (Array.isArray(result.data)) {
         setPage(page);
         setUsers(result.data);
@@ -171,7 +171,7 @@ function Users() {
       {renderContent()}
       <Pagination
         total={totalUsers}
-        perPage={1}
+        perPage={15}
         currentPage={page}
         onPageClick={onPageClick}
       />

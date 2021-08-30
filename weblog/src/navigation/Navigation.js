@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import AuthRoutes from "./AuthRoutes";
 import PanelRoutes from "./PanelRoutes";
 import PublicRoutes from "./PublicRoutes";
 
@@ -7,6 +8,9 @@ function Navigation() {
     <Switch>
       <Route path="/panel/">
         <PanelRoutes />
+      </Route>
+      <Route path="/auth/">
+        <AuthRoutes />
       </Route>
       <Route path="/">
         <PublicRoutes />

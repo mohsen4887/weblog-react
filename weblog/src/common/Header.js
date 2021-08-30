@@ -42,6 +42,11 @@ function Header({ title }) {
             </li>
           </ul>
         </div>
+        <div>
+          <Link to="/auth" className="btn btn-primary">
+            ورود/ثبت نام
+          </Link>
+        </div>
       </div>
     </nav>
   );
