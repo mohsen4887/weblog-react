@@ -1,0 +1,12 @@
+#authLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: rgb(5, 94, 177);
+  background: linear-gradient(
+    0deg,
+    rgba(5, 94, 177, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
