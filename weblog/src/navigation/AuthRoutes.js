@@ -1,7 +1,8 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import AuthLayout from "../components/auth/layout/Layout";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
+import Route from "./Route";
 
 function AuthRoutes() {
   return (

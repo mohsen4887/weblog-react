@@ -11,11 +11,11 @@ function CreateUser() {
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ name, email, password }) => {
     try {
       if (!loading) {
         setLoading(true);
-        await usersService.createUser(data.name, data.email);
+        await usersService.createUser(name, email, password);
         reset();
         setLoading(false);
       }
@@ -68,6 +68,30 @@ function CreateUser() {
                 })}
               />
               <div class="invalid-feedback">{errors?.email?.message}</div>
+            </div>
+          </div>
+          <div className="col-12 col-md-6">
+            <div className="mb-3">
+              <label for="password" class="form-label">
+                رمز عبور
+              </label>
+              <input
+                type="password"
+                className={`form-control ${
+                  errors?.password?.message ? "is-invalid" : ""
+                }`}
+                id="password"
+                {...register("password", {
+                  required: "لطفا رمز عبور کاربر را وارد کنید",
+                  pattern: {
+                    value:
+                      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+                    message:
+                      "رمز عبور باید شامل حروف، عدد و حداقل یک کاراکتر خاص باشد",
+                  },
+                })}
+              />
+              <div class="invalid-feedback">{errors?.password?.message}</div>
             </div>
           </div>
         </div>

@@ -28,11 +28,12 @@ async function deleteUser(id) {
   }
 }
 
-async function createUser(name, email) {
+async function createUser(name, email, password) {
   try {
     const { data } = await http.post(`users`, {
       name,
       email,
+      password,
     });
     toast.success("کار بر مورد نظر با موفقیت ایجاد شد");
     return data;
@@ -60,11 +61,12 @@ async function getUser(id) {
   }
 }
 
-async function updateUser(id, name, email) {
+async function updateUser(id, name, email, password) {
   try {
     await http.post(`users/${id}`, {
       name,
       email,
+      password,
     });
     toast.success("کار بر مورد نظر با موفقیت ویرایش شد");
   } catch (error) {

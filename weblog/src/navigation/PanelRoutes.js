@@ -1,8 +1,9 @@
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import PanelLayout from "../components/panel/layout/Layout";
 import CreateUser from "../components/panel/users/CreateUser";
 import EditUser from "../components/panel/users/EditUser";
 import Users from "../components/panel/users/Users";
+import Route from "./Route";
 
 function PanelRoutes() {
   return (

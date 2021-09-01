@@ -14,11 +14,11 @@ function EditUser() {
     formState: { errors },
     setValue,
   } = useForm();
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ name, email, password }) => {
     try {
       if (!loading) {
         setLoading(true);
-        await usersService.updateUser(id, data.name, data.email);
+        await usersService.updateUser(id, name, email, password);
         setLoading(false);
       }
     } catch (error) {
@@ -91,6 +91,30 @@ function EditUser() {
                 })}
               />
               <div class="invalid-feedback">{errors?.email?.message}</div>
+            </div>
+          </div>
+
+          <div className="col-12 col-md-6">
+            <div className="mb-3">
+              <label for="password" class="form-label">
+                رمز عبور جدید
+              </label>
+              <input
+                type="password"
+                className={`form-control ${
+                  errors?.password?.message ? "is-invalid" : ""
+                }`}
+                id="password"
+                {...register("password", {
+                  pattern: {
+                    value:
+                      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/,
+                    message:
+                      "رمز عبور باید شامل حروف، عدد و حداقل یک کاراکتر خاص باشد",
+                  },
+                })}
+              />
+              <div class="invalid-feedback">{errors?.password?.message}</div>
             </div>
           </div>
         </div>

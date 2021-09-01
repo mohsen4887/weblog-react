@@ -15,10 +15,15 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-  const onRegister = async ({ name, email, password }) => {
+  const onRegister = async ({ name, email, password, password_confirm }) => {
     try {
       setLoading(true);
-      const data = await authService.register(name, email, password);
+      const data = await authService.register(
+        name,
+        email,
+        password,
+        password_confirm
+      );
       setLoading(false);
     } catch (error) {
       console.log(error);

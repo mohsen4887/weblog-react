@@ -7,6 +7,7 @@ async function login(email, password) {
       email,
       password,
     });
+    toast.success("ورود به حساب کاربری با موفقیت انجام شد");
     return data;
   } catch (error) {
     console.log(error);
@@ -19,13 +20,15 @@ async function login(email, password) {
   }
 }
 
-async function register(name, email, password) {
+async function register(name, email, password, passwordConfirm) {
   try {
     const { data } = await http.post(`auth/register`, {
+      name,
       email,
       password,
-      name,
+      passwordConfirm,
     });
+    toast.success("ثبت نام با موفقیت انجام شد");
     return data;
   } catch (error) {
     console.log(error);
