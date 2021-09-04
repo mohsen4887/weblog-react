@@ -9,10 +9,10 @@ const defaultValue = {
 export default function user(state = defaultValue, action = {}) {
   switch (action.type) {
     case LOGIN: {
-      return action.data;
+      return action.payload;
     }
     case REGISTER: {
-      return action.data;
+      return action.payload;
     }
     case LOGOUT: {
       return defaultValue;

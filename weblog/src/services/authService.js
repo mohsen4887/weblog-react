@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 import http from "./base";
+import { store } from "../redux/store";
+import { login as reduxLogin } from "../redux/actions";
 
 async function login(email, password) {
   try {
@@ -8,6 +10,8 @@ async function login(email, password) {
       password,
     });
     toast.success("ورود به حساب کاربری با موفقیت انجام شد");
+    console.log("login data", data);
+    store.dispatch(reduxLogin(data));
     return data;
   } catch (error) {
     console.log(error);
