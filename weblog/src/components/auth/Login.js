@@ -40,7 +40,7 @@ function Login() {
                 required: "آدرس ایمیل را وارد کنید",
               })}
             />
-            <div class="invalid-feedback">{errors?.email?.message}</div>
+            <div className="invalid-feedback">{errors?.email?.message}</div>
           </div>
           <div className="mb-3">
             <label for="password">رمز عبور</label>
@@ -52,7 +52,7 @@ function Login() {
                 required: "رمز عبور خود را وارد کنید",
               })}
             />
-            <div class="invalid-feedback">{errors?.password?.message}</div>
+            <div className="invalid-feedback">{errors?.password?.message}</div>
           </div>
           <button type="submit" className="btn btn-primary btn-block">
             ورود

@@ -59,7 +59,7 @@ function EditUser() {
         <div className="row">
           <div className="col-12 col-md-6">
             <div className="mb-3">
-              <label for="name" class="form-label">
+              <label for="name" className="form-label">
                 نام و نام خانوادگی
               </label>
               <input
@@ -72,12 +72,12 @@ function EditUser() {
                   required: "لطفا نام کاربر را وارد کنید",
                 })}
               />
-              <div class="invalid-feedback">{errors?.name?.message}</div>
+              <div className="invalid-feedback">{errors?.name?.message}</div>
             </div>
           </div>
           <div className="col-12 col-md-6">
             <div className="mb-3">
-              <label for="email" class="form-label">
+              <label for="email" className="form-label">
                 ایمیل
               </label>
               <input
@@ -90,13 +90,13 @@ function EditUser() {
                   required: "لطفا ایمیل کاربر را وارد کنید",
                 })}
               />
-              <div class="invalid-feedback">{errors?.email?.message}</div>
+              <div className="invalid-feedback">{errors?.email?.message}</div>
             </div>
           </div>
 
           <div className="col-12 col-md-6">
             <div className="mb-3">
-              <label for="password" class="form-label">
+              <label for="password" className="form-label">
                 رمز عبور جدید
               </label>
               <input
@@ -114,7 +114,9 @@ function EditUser() {
                   },
                 })}
               />
-              <div class="invalid-feedback">{errors?.password?.message}</div>
+              <div className="invalid-feedback">
+                {errors?.password?.message}
+              </div>
             </div>
           </div>
         </div>

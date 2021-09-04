@@ -52,7 +52,7 @@ function Register() {
               })}
               id="name"
             />
-            <div class="invalid-feedback">{errors?.name?.message}</div>
+            <div className="invalid-feedback">{errors?.name?.message}</div>
           </div>
           <div className="mb-3">
             <label for="email">ایمیل</label>
@@ -68,7 +68,7 @@ function Register() {
                 },
               })}
             />
-            <div class="invalid-feedback">{errors?.email?.message}</div>
+            <div className="invalid-feedback">{errors?.email?.message}</div>
           </div>
           <div className="mb-3">
             <label for="password">رمز عبور</label>
@@ -90,7 +90,7 @@ function Register() {
               })}
               id="password"
             />
-            <div class="invalid-feedback">{errors?.password?.message}</div>
+            <div className="invalid-feedback">{errors?.password?.message}</div>
           </div>
           <div className="mb-3">
             <label for="password_confirm">تکرار رمز عبور</label>
@@ -110,7 +110,7 @@ function Register() {
                 },
               })}
             />
-            <div class="invalid-feedback">
+            <div className="invalid-feedback">
               {errors?.password_confirm?.message}
             </div>
           </div>
