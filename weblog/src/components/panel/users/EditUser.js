@@ -14,11 +14,11 @@ function EditUser() {
     formState: { errors },
     setValue,
   } = useForm();
-  const onSubmit = async ({ name, email, password }) => {
+  const onSubmit = async ({ name, email, password, isAdmin }) => {
     try {
       if (!loading) {
         setLoading(true);
-        await usersService.updateUser(id, name, email, password);
+        await usersService.updateUser(id, name, email, password, isAdmin);
         setLoading(false);
       }
     } catch (error) {
@@ -34,6 +34,7 @@ function EditUser() {
         const user = await usersService.getUser(id);
         setValue("name", user.name, { shouldValidate: true });
         setValue("email", user.email, { shouldValidate: true });
+        setValue("isAdmin", user.isAdmin, { shouldValidate: true });
         setLoading(false);
       }
     } catch (error) {
@@ -116,6 +117,22 @@ function EditUser() {
               />
               <div className="invalid-feedback">
                 {errors?.password?.message}
+              </div>
+            </div>
+          </div>
+
+          <div className="col-12">
+            <div className="mb-3">
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  {...register("isAdmin")}
+                  id="isAdminCheck"
+                />
+                <label className="form-check-label" for="isAdminCheck">
+                  آیا مدیر است؟
+                </label>
               </div>
             </div>
           </div>

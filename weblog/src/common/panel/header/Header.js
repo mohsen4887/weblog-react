@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import authService from "../../../services/authService";
 import "./style.scss";
 function Header() {
+  const logout = () => {
+    try {
+      authService.logout();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div id="header">
       <div>
@@ -24,16 +33,6 @@ function Header() {
             aria-labelledby="dropdownMenuButton2"
           >
             <li>
-              <a className="dropdown-item active" href="#">
-                Action
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Another action
-              </a>
-            </li>
-            <li>
               <a className="dropdown-item" href="#">
                 Something else here
               </a>
@@ -42,9 +41,9 @@ function Header() {
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                Separated link
-              </a>
+              <button className="dropdown-item" onClick={logout}>
+                خروج
+              </button>
             </li>
           </ul>
         </div>

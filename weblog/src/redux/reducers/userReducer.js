@@ -5,6 +5,7 @@ const defaultValue = {
   name: "",
   email: "",
   token: "",
+  isAdmin: false,
 };
 export default function user(state = defaultValue, action = {}) {
   switch (action.type) {

@@ -1,12 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-const RouteWrapper = ({ auth, guest, children, ...otherProps }) => {
-  const login = false;
+const RouteWrapper = ({
+  auth,
+  guest,
+  admin,
+  user,
+  children,
+  ...otherProps
+}) => {
+  const login = !!user?.token;
+  const isAdmin = !!user?.isAdmin;
 
-  if (auth && !login) {
+  if ((auth || admin) && !login) {
     return <Redirect to="/auth/login" />;
+  }
+  if (admin && !isAdmin) {
+    return <Redirect to="/" />;
   }
   if (guest && login) {
     return <Redirect to="/" />;
@@ -15,7 +27,13 @@ const RouteWrapper = ({ auth, guest, children, ...otherProps }) => {
   return <Route {...otherProps}>{children}</Route>;
 };
 
-export default RouteWrapper;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, null)(RouteWrapper);
 
 RouteWrapper.propTypes = {
   auth: PropTypes.bool,

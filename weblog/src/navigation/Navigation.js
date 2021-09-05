@@ -7,10 +7,10 @@ import Route from "./Route";
 function Navigation() {
   return (
     <Switch>
-      <Route path="/panel/">
+      <Route admin path="/panel/">
         <PanelRoutes />
       </Route>
-      <Route path="/auth/">
+      <Route guest path="/auth/">
         <AuthRoutes />
       </Route>
       <Route path="/">
