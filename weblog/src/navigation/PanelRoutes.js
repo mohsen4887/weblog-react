@@ -1,4 +1,5 @@
 import { Switch } from "react-router-dom";
+import Categories from "../components/panel/categories/Categories";
 import PanelLayout from "../components/panel/layout/Layout";
 import CreateUser from "../components/panel/users/CreateUser";
 import EditUser from "../components/panel/users/EditUser";
@@ -17,6 +18,9 @@ function PanelRoutes() {
         </Route>
         <Route exact path="/panel/users/:id/edit">
           <EditUser />
+        </Route>
+        <Route exact path="/panel/categories">
+          <Categories />
         </Route>
       </Switch>
     </PanelLayout>

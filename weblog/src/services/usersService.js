@@ -16,7 +16,7 @@ async function getAllUsers(query = "", sort = "", page = 1, perPage = 15) {
 async function deleteUser(id) {
   try {
     await http.delete(`users/${id}`);
-    toast.success("کار بر مورد نظر با موفقیت حذف شد");
+    toast.success("کاربر مورد نظر با موفقیت حذف شد");
   } catch (error) {
     console.log(error);
     let message = "خطا در حذف کاربر";
@@ -36,7 +36,7 @@ async function createUser(name, email, password, isAdmin) {
       password,
       isAdmin,
     });
-    toast.success("کار بر مورد نظر با موفقیت ایجاد شد");
+    toast.success("کاربر مورد نظر با موفقیت ایجاد شد");
     return data;
   } catch (error) {
     let message = "خطا در ایجاد کاربر جدید";
@@ -70,7 +70,7 @@ async function updateUser(id, name, email, password, isAdmin) {
       password,
       isAdmin,
     });
-    toast.success("کار بر مورد نظر با موفقیت ویرایش شد");
+    toast.success("کاربر مورد نظر با موفقیت ویرایش شد");
   } catch (error) {
     let message = "خطا در ویرایش اطلاعات کاربر";
     if (error.response?.data?.Message) {
