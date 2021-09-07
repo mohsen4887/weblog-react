@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 #sidebar {
   width: 250px;
   min-width: 250px;
@@ -6,10 +10,23 @@
   height: 100vh;
   overflow: auto;
   padding: 10px;
+  transition: all ease 0.3s;
+  @include media-breakpoint-down(sm) {
+    margin-right: -250px;
+    position: absolute;
+    &.open {
+      margin-right: 0;
+    }
+  }
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    li.active {
+      a {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
     a {
       text-decoration: none;
       color: #eee;

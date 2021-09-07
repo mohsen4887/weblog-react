@@ -20,4 +20,9 @@ function Navigation() {
   );
 }
 
+export function isActiveRoute(route, pattern) {
+  const regex = new RegExp(pattern);
+  return regex.test(route);
+}
+
 export default Navigation;

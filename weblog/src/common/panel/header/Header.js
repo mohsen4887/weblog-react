@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import authService from "../../../services/authService";
 import "./style.scss";
-function Header() {
+function Header({ onToggleSideBar }) {
   const logout = () => {
     try {
       authService.logout();
@@ -13,6 +13,12 @@ function Header() {
   return (
     <div id="header">
       <div>
+        <button
+          className="btn btn-light me-3 d-sm-none"
+          onClick={() => onToggleSideBar(true)}
+        >
+          <i className="fa fa-bars"></i>
+        </button>
         <Link className="text-dark" to="/">
           مشاهده وبسایت
         </Link>
