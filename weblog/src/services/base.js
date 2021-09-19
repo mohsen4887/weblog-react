@@ -1,6 +1,7 @@
 import axios from "axios";
+export const baseUrl = "https://localhost:44348/";
 const http = axios.create({
-  baseURL: "https://localhost:5001/",
+  baseURL: baseUrl,
 });
 
 export default http;

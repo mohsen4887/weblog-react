@@ -13,7 +13,7 @@ function Header({ title, user }) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
+      <div className="container-fluid">
         <a className="navbar-brand" href="#">
           وبلاگ من
         </a>

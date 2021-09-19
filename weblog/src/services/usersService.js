@@ -81,10 +81,29 @@ async function updateUser(id, name, email, password, isAdmin) {
   }
 }
 
+async function uploadImage(image) {
+  try {
+    const data = new FormData();
+    data.append("image", image);
+    await http.post(`users/image`, data, {
+      "Content-Type": `multipart/form-data;`,
+    });
+    toast.success("تصویر آزمایشی آپلود شد");
+  } catch (error) {
+    let message = "خطا در آپلود تصویر";
+    if (error.response?.data?.Message) {
+      message = error.response?.data?.Message;
+    }
+    toast.error(message);
+    throw error;
+  }
+}
+
 export default {
   getAllUsers,
   deleteUser,
   createUser,
   getUser,
   updateUser,
+  uploadImage,
 };

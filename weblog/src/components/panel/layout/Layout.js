@@ -17,7 +17,7 @@ function PanelLayout({ children }) {
       <Sidebar onToggleSideBar={onToggleSideBar} open={isSideBarOpen} />
       <div id="route-container" className="flex-grow-1">
         <Header onToggleSideBar={onToggleSideBar} />
-        <div id="content" className="container py-3">
+        <div id="content" className="container-fluid py-3">
           {children}
         </div>
         <Footer />
